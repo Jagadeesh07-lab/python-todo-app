@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Application</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #4CAF50; }
+        ul { list-style-type: none; padding-left: 0; }
+        li { background-color: #f9f9f9; margin: 5px 0; padding: 10px; border-radius: 5px; }
+        button { background-color: #ff6666; border: none; padding: 5px 10px; cursor: pointer; border-radius: 5px; }
+        button:hover { background-color: #ff3333; }
+    </style>
+</head>
+<body>
+    <h1>My To-Do List</h1>
+
+    <form action="/add" method="POST">
+        <input type="text" name="task" placeholder="New task..." required>
+        <button type="submit">Add Task</button>
+    </form>
+
+    <ul>
+        {% for todo in todos %}
+            <li>{{ todo }} <a href="/delete/{{ loop.index0 }}"><button>Delete</button></a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
